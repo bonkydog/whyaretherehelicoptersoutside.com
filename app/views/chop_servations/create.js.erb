@@ -1,3 +1,7 @@
 $("#new_chop_servation").hide();
 
-$("#thanks").html("<%= @message %>").show();
+<% if @sighted %>
+  $("#thanks").html("<br/><br/><div class=\"alert alert-error\">Oh noes!</div>").show();
+<% else %>
+  $("#thanks").html("<br/><br/><div class=\"alert alert-success\">Oh yes!!</div>").show();
+<% end %>

@@ -1,29 +1,44 @@
 %script{:type => "text/javascript", :src => "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
 %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
 
-.hero-unit
-  %h1 Are there helicopters outside?
-  %p
-    = form_for(ChopServation.new, :remote => true) do |f|
-      = f.hidden_field :sighted
-      = f.hidden_field :latitude
-      = f.hidden_field :longitude
+.row
+  .span10.offset1
+    .hero-unit
+      %h1#question Are there helicopters outside?
+      %br
+      %br
+      .row
+        .span9.offset1
+          = form_for(ChopServation.new, :remote => true) do |f|
+            = f.hidden_field :sighted
+            = f.hidden_field :latitude
+            = f.hidden_field :longitude
 
-      #do_they_know_reason{:style => "display: none;"}
-        %p
-          Do you know why?
-          = f.submit "Yes", :id => "yes_reason"
-          = f.submit "No", :id => "no_reason"
+            #do_they_know_reason{:style => "display: none;"}
+              = f.submit "Yes", :id => "yes_reason", :class => "btn btn-success btn-large"
+              &nbsp;
+              &nbsp;
+              or
+              &nbsp;
+              &nbsp;
+              = f.submit "No", :id => "no_reason", :class => "btn btn-danger btn-large"
 
-      #input_reason{:style => "display: none;"}
-        %p
-          Well then tell me!
-          = f.text_field :reason
-          = f.submit "Damn Chopper!"
-      = f.submit "Yes", :id => "yes_chopper"
-      = f.submit "No", :id => "no_chopper"
+            #input_reason{:style => "display: none;"}
+              = f.text_field :reason
+              = f.submit "Damn Chopper!", :class => "btn btn-success btn-large"
 
-    #thanks{:style => "display: none;"}
+            #ask_choppers
+              = f.submit "Yes", :id => "yes_chopper", :class => "btn btn-success btn-large"
+              &nbsp;
+              &nbsp;
+              or
+              &nbsp;
+              &nbsp;
+              = f.submit "No", :id => "no_chopper", :class => "btn btn-danger btn-large"
+
+      .row
+        .span9
+          #thanks{:style => "display: none;"}
 
 .row
   .span6

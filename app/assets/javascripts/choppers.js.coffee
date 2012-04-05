@@ -43,14 +43,17 @@ $ ->
     error "not supported"
 
   $("#yes_reason").click ->
+    $("#question").text("Well then tell me already!")
+
     $("#do_they_know_reason").hide()
     $("#input_reason").show()
     return false;
 
   $("#yes_chopper").click ->
+    $("#question").text("Do you know why?")
     $("#chop_servation_sighted").val("true");
     $("#do_they_know_reason").show();
-    $("#yes_chopper, #no_chopper").hide();
+    $("#ask_choppers").hide();
     return false;
 
   $("#no_chopper").click ->
