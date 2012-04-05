@@ -36,11 +36,20 @@ searchTweets = (position, miles_away) ->
           $("#tweet_container").append tweet_html
     else
       searchTweets(position, miles_away * 2)
+
+animateChopper = ->
+  $('#chopper_svg').animate({ marginLeft: "-400px" }, { duration: 20000, complete: ->
+    $("#chopper_svg").css("margin-left", "1350px")
+    setTimeout(animateChopper, 5000)
+  })
+
 $ ->
   if navigator.geolocation
     navigator.geolocation.getCurrentPosition success, error
   else
     error "not supported"
+
+  animateChopper()
 
   $("#yes_reason").click ->
     $("#question").text("Why?")
