@@ -24,8 +24,20 @@ $(function() {
   }
 
 
+  $("#yes_reason").click(function() {
+    $("#do_they_know_reason").hide();
+    $("#input_reason").show();
+    return false;
+  });
+
+  $("#no_reason").click(function() {
+  });
+
   $("#yes_chopper").click(function() {
     $("#sighted").val("true");
+    $("#do_they_know_reason").show();
+    $("#yes_chopper, #no_chopper").hide();
+    return false;
   });
 
   $("#no_chopper").click(function() {

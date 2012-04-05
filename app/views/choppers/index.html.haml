@@ -9,6 +9,17 @@
       = hidden_field_tag :latitude
       = hidden_field_tag :longitude
 
+      #do_they_know_reason{:style => "display: none;"}
+        %p
+          Do you know why?
+          = f.submit "Yes", :id => "yes_reason"
+          = f.submit "No", :id => "no_reason"
+
+      #input_reason{:style => "display: none;"}
+        %p
+          Well then tell me!
+          = f.text_field :reason
+          = f.submit "Damn Chopper!"
       = f.submit "Yes", :id => "yes_chopper"
       = f.submit "No", :id => "no_chopper"
   #tweet_container
