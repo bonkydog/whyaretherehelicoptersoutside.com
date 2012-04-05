@@ -1,6 +1,6 @@
 success = (position) ->
-  s = $("#status")
-  s.innerHTML = "latitude: " + position.coords.latitude + ", longitude: " + position.coords.longitude
+  $("#chop_servation_latitude").val(position.coords.latitude)
+  $("#chop_servation_longitude").val(position.coords.longitude)
   searchTweets position
 
 printSuccess = (data, textStatus) ->
@@ -37,3 +37,17 @@ $ ->
     navigator.geolocation.getCurrentPosition success, error
   else
     error "not supported"
+
+  $("#yes_reason").click ->
+    $("#do_they_know_reason").hide()
+    $("#input_reason").show()
+    return false;
+
+  $("#yes_chopper").click ->
+    $("#sighted").val("true");
+    $("#do_they_know_reason").show();
+    $("#yes_chopper, #no_chopper").hide();
+    return false;
+
+  $("#no_chopper").click ->
+    $("#sighted").val("false");

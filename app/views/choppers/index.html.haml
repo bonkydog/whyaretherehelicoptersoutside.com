@@ -5,9 +5,9 @@
   %h1 Are there helicopters outside?
   %p
     = form_for(ChopServation.new, :remote => true) do |f|
-      = hidden_field_tag :sighted
-      = hidden_field_tag :latitude
-      = hidden_field_tag :longitude
+      = f.hidden_field :sighted
+      = f.hidden_field :latitude
+      = f.hidden_field :longitude
 
       #do_they_know_reason{:style => "display: none;"}
         %p
