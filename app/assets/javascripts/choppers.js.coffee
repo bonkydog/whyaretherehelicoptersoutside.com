@@ -43,7 +43,7 @@ $ ->
     error "not supported"
 
   $("#yes_reason").click ->
-    $("#question").text("Well then tell me already!")
+    $("#question").text("Why?")
 
     $("#do_they_know_reason").hide()
     $("#input_reason").show()

@@ -2,13 +2,21 @@
 %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
 
 .row
+  .span12
+    = image_tag "helicopter.svg"
+    = image_tag "helicopter.svg"
+    = image_tag "helicopter.svg"
+    = image_tag "helicopter.svg"
+
+%br
+.row
   .span10.offset1
     .hero-unit
       %h1#question Are there helicopters outside?
       %br
       %br
       .row
-        .span9.offset1
+        .span10
           = form_for(ChopServation.new, :remote => true) do |f|
             = f.hidden_field :sighted
             = f.hidden_field :latitude
@@ -24,9 +32,9 @@
               = f.submit "No", :id => "no_reason", :class => "btn btn-danger btn-large"
 
             #input_reason{:style => "display: none;"}
-              = f.text_field :reason
+              = f.text_area :reason, :class => "input-xlarge", :rows => "5", :cols => "10", :placeholder => "Tell us why there is a chopper outside"
               %br
-              = f.submit "Damn Chopper!", :class => "btn btn-success btn-large"
+              = f.submit "Chopper!", :class => "btn btn-success btn-large"
 
             #ask_choppers
               = f.submit "Yes", :id => "yes_chopper", :class => "btn btn-success btn-large"
