@@ -44,10 +44,10 @@ $ ->
     return false;
 
   $("#yes_chopper").click ->
-    $("#sighted").val("true");
+    $("#chop_servation_sighted").val("true");
     $("#do_they_know_reason").show();
     $("#yes_chopper, #no_chopper").hide();
     return false;
 
   $("#no_chopper").click ->
-    $("#sighted").val("false");
+    $("#chop_servation_sighted").val("false");
