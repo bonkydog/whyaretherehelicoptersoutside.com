@@ -1,11 +1,3 @@
-<html>
-<head>
-<meta name="viewport" content="width=620" />
-<title>geolocation</title>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-<script>
 function success(position) {
   var s = document.querySelector('#status');
   s.innerHTML = 'latitude: ' + position.coords.latitude + ', longitude: ' + position.coords.longitude
@@ -25,11 +17,13 @@ function error(msg) {
   // console.log(arguments);
 }
 
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(success, error);
-} else {
-  error('not supported');
-}
+$(function() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+  } else {
+    error('not supported');
+  }
+});
 
 
 function searchTweets(position) {
@@ -76,13 +70,3 @@ function searchTweets(position) {
     }
   );
 }
-
-</script>
-</head>
-<body>
-  <article>
-    <p>Finding your location: <span id="status">checking...</span></p>
-  </article>
-  <div id="tweet_container"></div>
-</body>
-</html>
