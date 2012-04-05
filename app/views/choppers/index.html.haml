@@ -4,7 +4,7 @@
 .hero-unit
   %h1 Are there helicopters outside?
   %p
-    = form_for(ChopServation.new) do |f|
+    = form_for(ChopServation.new, :remote => true) do |f|
       = hidden_field_tag :sighted
       = hidden_field_tag :latitude
       = hidden_field_tag :longitude
@@ -22,4 +22,7 @@
           = f.submit "Damn Chopper!"
       = f.submit "Yes", :id => "yes_chopper"
       = f.submit "No", :id => "no_chopper"
+
+    #thanks{:style => "display: none;"}
+      Thanks!
   #tweet_container
