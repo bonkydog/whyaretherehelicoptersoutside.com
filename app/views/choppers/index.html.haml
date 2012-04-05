@@ -1,52 +1,53 @@
 %script{:type => "text/javascript", :src => "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"}
 %script{:type => "text/javascript", :src => "http://maps.google.com/maps/api/js?sensor=false"}
 
-.row
-  .span10.offset1
-    .hero-unit
-      %h1#question Are there helicopters outside?
-      %br
-      %br
-      .row
-        .span10
-          = form_for(ChopServation.new, :remote => true) do |f|
-            = f.hidden_field :sighted
-            = f.hidden_field :latitude
-            = f.hidden_field :longitude
+.container
+  .row
+    .span10.offset1
+      .hero-unit
+        %h1#question Are there helicopters outside?
+        %br
+        %br
+        .row
+          .span10
+            = form_for(ChopServation.new, :remote => true) do |f|
+              = f.hidden_field :sighted
+              = f.hidden_field :latitude
+              = f.hidden_field :longitude
 
-            #do_they_know_reason{:style => "display: none;"}
-              = f.submit "Yes", :id => "yes_reason", :class => "btn btn-success btn-large"
-              &nbsp;
-              &nbsp;
-              or
-              &nbsp;
-              &nbsp;
-              = f.submit "No", :id => "no_reason", :class => "btn btn-danger btn-large"
+              #do_they_know_reason{:style => "display: none;"}
+                = f.submit "Yes", :id => "yes_reason", :class => "btn btn-success btn-large"
+                &nbsp;
+                &nbsp;
+                or
+                &nbsp;
+                &nbsp;
+                = f.submit "No", :id => "no_reason", :class => "btn btn-danger btn-large"
 
-            #input_reason{:style => "display: none;"}
-              = f.text_area :reason, :class => "input-xlarge", :rows => "5", :cols => "10", :placeholder => "Tell us why there is a chopper outside"
-              %br
-              = f.submit "Chopper!", :class => "btn btn-success btn-large"
+              #input_reason{:style => "display: none;"}
+                = f.text_area :reason, :class => "input-xlarge", :rows => "5", :cols => "10", :placeholder => "Tell us why there is a chopper outside"
+                %br
+                = f.submit "Chopper!", :class => "btn btn-success btn-large"
 
-            #ask_choppers
-              = f.submit "Yes", :id => "yes_chopper", :class => "btn btn-success btn-large"
-              &nbsp;
-              &nbsp;
-              or
-              &nbsp;
-              &nbsp;
-              = f.submit "No", :id => "no_chopper", :class => "btn btn-danger btn-large"
+              #ask_choppers
+                = f.submit "Yes", :id => "yes_chopper", :class => "btn btn-success btn-large"
+                &nbsp;
+                &nbsp;
+                or
+                &nbsp;
+                &nbsp;
+                = f.submit "No", :id => "no_chopper", :class => "btn btn-danger btn-large"
 
-      .row
-        .span9
-          %blockquote#thanks{:style => "display: none;"}
+        .row
+          .span9
+            %blockquote#thanks{:style => "display: none;"}
 
-.row
-  .span6
-    %h3
-      Reasons
-    %table.reasons.table-striped.table-bordered
-      = render @chop_servations
-  .span6#tweet_container
+  .row
+    .span5.offset1
+      %h3
+        Reasons
+      %table.reasons.table-striped.table-bordered{:width => '100%'}
+        = render @chop_servations
+    .span6#tweet_container
 
 
