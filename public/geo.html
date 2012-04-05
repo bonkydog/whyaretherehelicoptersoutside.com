@@ -46,11 +46,10 @@ function searchTweets(position) {
   $.getJSON(
     twitter_api_url + '?callback=?&rpp=5&q=helicopter&geocode=' + position.coords.latitude + ',' + position.coords.longitude + ',5mi',
     function(data) {
-      console.log(data);
       $.each(data.results, function(i, tweet) {
         // Uncomment line below to show tweet data in Fire Bug console
         // Very helpful to find out what is available in the tweet objects
-        //console.log(tweet);
+        console.log(tweet);
 
         // Before we continue we check that we got data
         if(tweet.text !== undefined) {
