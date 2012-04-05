@@ -4,6 +4,16 @@
 .hero-unit
   %h1 Are there helicopters outside?
   %p
+    = form_for(ChopServation.new) do |f|
+      = hidden_field_tag :sighted
+      = hidden_field_tag :latitude
+      = hidden_field_tag :longitude
+
+      = f.submit "Yes", :id => "yes_chopper"
+      = f.submit "No", :id => "no_chopper"
+
+
+
     Finding your location
     %span#status checking...
   #tweet_container

@@ -1,12 +1,11 @@
+
+
 function success(position) {
   var s = document.querySelector('#status');
-  s.innerHTML = 'latitude: ' + position.coords.latitude + ', longitude: ' + position.coords.longitude
-  searchTweets(position);
-}
+  $("#latitude").val(position.coords.latitude);
+  $("#longitude").val(position.coords.longitude);
 
-function printSuccess(data, textStatus){
-  console.log(data);
-  console.log(textStatus);
+  searchTweets(position);
 }
 
 function error(msg) {
@@ -23,6 +22,17 @@ $(function() {
   } else {
     error('not supported');
   }
+
+
+  $("#yes_chopper").click(function() {
+    $("#sighted").val("true");
+  });
+
+  $("#no_chopper").click(function() {
+    $("#sighted").val("false");
+  });
+
+
 });
 
 

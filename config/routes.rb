@@ -1,4 +1,6 @@
 Hella::Application.routes.draw do
+  resources :chop_servations
+
   root :to => 'choppers#index'
 
   # See how all your routes lay out with "rake routes"
