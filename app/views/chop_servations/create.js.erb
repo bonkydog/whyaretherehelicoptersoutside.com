@@ -1,5 +1,5 @@
 $("#new_chop_servation").hide();
-
+$(".reasons").append('<tr><td><%= @chop_servation.reason%></td></tr>');
 <% if @sighted %>
   $("#thanks").html("<br/><br/><div class=\"alert alert-error\">Oh noes!</div>").show();
 <% else %>
