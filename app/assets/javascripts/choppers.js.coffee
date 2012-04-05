@@ -1,0 +1,39 @@
+success = (position) ->
+  s = $("#status")
+  s.innerHTML = "latitude: " + position.coords.latitude + ", longitude: " + position.coords.longitude
+  searchTweets position
+
+printSuccess = (data, textStatus) ->
+  console.log data
+  console.log textStatus
+
+error = (msg) ->
+  s = $("#status")
+  s.innerHTML = (if typeof msg is "string" then msg else "failed")
+  s.className = "fail"
+
+searchTweets = (position) ->
+  twitter_api_url = "http://search.twitter.com/search.json"
+  $.ajaxSetup cache: true
+  $.getJSON twitter_api_url + "?callback=?&rpp=5&q=helicopter&geocode=" + position.coords.latitude + "," + position.coords.longitude + ",5mi", (data) ->
+
+    $.each data.results, (i, tweet) ->
+      console.log tweet
+      if tweet.text isnt `undefined`
+        date_tweet = new Date(tweet.created_at)
+        date_now = new Date()
+        date_diff = date_now - date_tweet
+        hours = Math.round(date_diff / (1000 * 60 * 60))
+        tweet_html = "<div class=\"tweet_text\">"
+        tweet_html += "<a href=\"http://www.twitter.com/"
+        tweet_html += tweet.from_user + "/status/" + tweet.id + "\">"
+        tweet_html += tweet.text + "</a></div>"
+        tweet_html += "<div class=\"tweet_hours\">" + hours
+        tweet_html += " hours ago at " + tweet.location + "(" + tweet.geo + ")"
+        tweet_html += "</div>"
+        $("#tweet_container").append tweet_html
+$ ->
+  if navigator.geolocation
+    navigator.geolocation.getCurrentPosition success, error
+  else
+    error "not supported"
