@@ -29,7 +29,9 @@ searchTweets = (position) ->
         tweet_html += tweet.from_user + "/status/" + tweet.id + "\">"
         tweet_html += tweet.text + "</a></div>"
         tweet_html += "<div class=\"tweet_hours\">" + hours
-        tweet_html += " hours ago at " + tweet.location + "(" + tweet.geo + ")"
+        tweet_html += " hours ago at " + tweet.location
+        if tweet.geo
+          tweet_html += "(" + tweet.geo + ")"
         tweet_html += "</div>"
         $("#tweet_container").append tweet_html
 $ ->
