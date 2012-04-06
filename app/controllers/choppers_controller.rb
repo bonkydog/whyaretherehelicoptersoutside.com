@@ -1,6 +1,6 @@
 class ChoppersController < ApplicationController
   def index
-    @chop_servations = ChopServation.all
-    p @chop_servations
+    location = request.location
+    @chop_servations = ChopServation.near(request.location.address, 20)
   end
 end
